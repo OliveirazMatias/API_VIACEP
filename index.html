@@ -1,71 +1,67 @@
-<html>
-    <head>
-    <title>ViaCEP Webservice</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="js/index.js"></script>
+    <link rel="icon" type="png" href="./img/icon.png">
+    <title>VIA-CEP</title>
+</head>
+<body>
+    <nav id="navbar">
+        <div></div>
+        <h1>CHECK ADDRESS</h1>
+        <div>
+            <a href="https://www.google.com/search?q=corno&tbm=isch&ved=2ahUKEwjU_aznhYGFAxXpB7kGHeqSAkIQ2-cCegQIABAA&oq=corno&gs_lp=EgNpbWciBWNvcm5vMgUQABiABDIFEAAYgAQyBRAAGIAESLkRUIkIWNUMcAB4AJABAJgBowGgAdUFqgEDMC42uAEDyAEA-AEBigILZ3dzLXdpei1pbWfCAgQQIxgnwgIIEAAYgAQYsQPCAg0QABiABBiKBRhDGLEDwgIKEAAYgAQYigUYQ4gGAQ&sclient=img&ei=a-X5ZZScHemP5OUP6qWKkAQ&bih=730&biw=1536&prmd=ivnsmbtz&rlz=1C1GCEU_pt-BRBR1041BR1041#imgrc=6MjAtFJebxMUMM">
+                <img src="" alt="" id="profpic">
+        </a>
+        </div>
+    </nav>
+
+    <header></header>
+
+    <main id="main">
+        <form method="get" action="." id="forms">
+            <div>
+                <label>
+                <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                    onblur="pesquisacep(this.value); " placeholder="CEP"/></label><br />
+                <label>
+                <input name="rua" type="text" id="rua" size="60" placeholder="Rua" class="showinfo"/></label><br />
+                <label>
+                <input name="bairro" type="text" id="bairro" size="40" placeholder="Bairro" class="showinfo"/></label><br />
+                <label>
+                <input name="cidade" type="text" id="cidade" size="40" class="showinfo" placeholder="Cidade"/></label><br />
+                <label>
+                <input name="uf" type="text" id="uf" size="2" class="showinfo" placeholder="Estado"/></label><br />
+                <label>
+                <input name="ibge" type="text" id="ibge" size="8" class="showinfo" placeholder="IBGE"/></label><br />
+            </form>
+            <button id="pesquisar">
+                Pesquisar
+              </button>
+
+            <button id="apagar">
+                Apagar
+              </button>   
     
-    <script>
-    function limpa_formulário_cep() {
-            document.getElementById('rua').value=("");
-            document.getElementById('bairro').value=("");
-            document.getElementById('cidade').value=("");
-            document.getElementById('uf').value=("");
-            document.getElementById('ibge').value=("");
-    }
+            </div>
+          
 
-    function meu_callback(conteudo) {
-        if (!("erro" in conteudo)) {
-            document.getElementById('rua').value=(conteudo.logradouro);
-            document.getElementById('bairro').value=(conteudo.bairro);
-            document.getElementById('cidade').value=(conteudo.localidade);
-            document.getElementById('uf').value=(conteudo.uf);
-            document.getElementById('ibge').value=(conteudo.ibge);
-        } 
-        else {
-            limpa_formulário_cep();
-            alert("CEP não encontrado.");
-        }
-    }
-        
-    function pesquisacep(valor) {
-        var cep = valor.replace(/\D/g, '');
-        if (cep != "") {
-            var validacep = /^[0-9]{8}$/;
-            if(validacep.test(cep)) {
-                document.getElementById('rua').value="...";
-                document.getElementById('bairro').value="...";
-                document.getElementById('cidade').value="...";
-                document.getElementById('uf').value="...";
-                document.getElementById('ibge').value="...";
+        <div id="maps">
+            <img src="./img/mundi.png" alt="" id="mundi">
+        </div>    
+    </main>
 
-                var script = document.createElement('script');
-                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-                document.body.appendChild(script);
-            } 
-            else {
-                limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
-            }
-        } 
-        else {
-            limpa_formulário_cep();
-        }
-    };
-
-    </script>
-    </head>
-
-    <body>
-      <form method="get" action="." id="body">
-        <label>Cep:<input name="cep" type="text" id="cep" value="" size="10" maxlength="9"onblur="pesquisacep(this.value);" /></label>
-        <label>Rua: <input name="rua" type="text" id="rua" size="60" /></label>
-        <label>Bairro:<input name="bairro" type="text" id="bairro" size="40" /></label>
-        <label>Cidade:<input name="cidade" type="text" id="cidade" size="40" /></label>
-        <label>Estado:<input name="uf" type="text" id="uf" size="2" /></label>
-        <label>IBGE:<input name="ibge" type="text" id="ibge" size="8" /></label>
-      </form>
-    </body>
-
-    </html>
+    <footer>
+        <div>
+            <pre id="creditos"> 
+                Créditos: Henrique Bussi, Juan Rodrigues e Mateus Silverio
+            </pre>
+        </div>
+    </footer>
     
+    
+</body>
+<script src="./js/index.js"></script>
+</html>
