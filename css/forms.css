@@ -12,10 +12,6 @@
   box-sizing: border-box;
 }
 
-#cep{
-  background-color: var(--clr-input);
-}
-
 #navbar{
   display: flex;
   background-color: var(--clr-navbar);
@@ -43,14 +39,14 @@
   margin-top: 15%;
 }
 
-#cep{
+/* .showinfo{
   border-radius: 7px;
   margin-top: 10px;
   margin-bottom: 5vh;
   background-color: var(--clr-input);
-  width: 70vh;
+  width: 50vh;
   height: 5vh;
-}
+} */
 
 #creditos{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -71,7 +67,7 @@
 }
 
 
-#pesquisar{
+#enviar{
   height: 30px;
   width: 60px;
   background-color: #21a366;
@@ -82,7 +78,7 @@
   color: whitesmoke;
 }
 
-#pesquisar:hover{
+#enviar:hover{
   background-color: #198754;
   color: aliceblue;
   transform: translate(0, -2.5px);
